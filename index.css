@@ -106,6 +106,14 @@ button:hover {
     height: 400px;
 }
 
+.table_heading {
+    background-color: rgb(252, 182, 96); 
+    width: 20%; 
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 10px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -181,4 +189,9 @@ th, td {
     button {
         font-size: 0.85rem; 
     }
+
+    .table_heading {
+        background-color: transparent;
+    }
+    
 }
