@@ -27,11 +27,11 @@ header {
     text-align: center;
     justify-content: center;
     width: 40%;
-    background-color: #74c877;
+    background-color: #b30101;
     padding: 15px 25px;
-    border: 5px solid rgb(218, 126, 60);
+    border: 5px solid rgb(0, 87, 146);
     border-radius: 25px;
-    box-shadow: 2px 4px 5px 2px rgba(228, 143, 82, 0.5);
+    box-shadow: 2px 4px 5px 2px rgba(90, 247, 153, 0.5);
 }
 
 header h1 {
@@ -40,36 +40,61 @@ header h1 {
     font-family: "Agu Display", serif;
     font-weight: 1000;
     font-size: 2.5rem;
-    color: rgb(147, 62, 2);
+    color: rgb(244, 248, 141);
 }
 
 main {
     padding: 20px;
     color: aliceblue;
+    font-family: "Playwrite GB S", serif;
+    font-weight: 1000;
+    color: rgb(202, 40, 0);
+}
+
+.dropdown-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dropdown-section h2 {
+    font-size: 1.8rem;
+    margin: 20px;
+    color: rgb(255, 51, 0);
 }
 
 .search-section {
-    display: flex;
-    justify-content: center;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
-input {
+input, select {
     padding: 10px;
-    font-size: 15px;
+    font-size: 20px;
     margin-right: 10px;
+    border-radius: 10px;
+    border: none;
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 206, 206, 0.5);
 }
 
 button {
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    background-color: #74c877;
+    background-color: #fe6a48;
     padding: 15px 35px;
-    margin-left: 10px;
+    margin: 0px 10px;
     border: 1px solid rgb(218, 126, 60);
     border-radius: 25px;
     box-shadow: 2px 4px 5px 2px rgba(213, 100, 20, 0.5);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    color: #ffc107;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .stock-info, .graph-section, .stock-table {
@@ -88,7 +113,10 @@ table {
 
 th, td {
     padding: 10px;
-    border: 1px solid #ddd;
+    font-size: 1rem;
+    border: 5px solid #ddd;
+    background-color: #078bff;
+    color: #ff0606;
     text-align: center;
 }
 .tabs-section {
@@ -104,23 +132,20 @@ th, td {
 .stock-tab {
     padding: 10px 15px;
     margin: 5px;
-    background-color: #4CAF50;
+    background-color: #fe6a48;
     color: white;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .stock-tab:hover {
-    background-color: #45a049;
+    background-color: #fe6a48;
 }
 
 .stock-tab.active {
-    background-color: #3e8e41;
+    background-color: #fe6a48;
 }
-.dropdown-section {
-    margin-bottom: 20px;
-    text-align: center;
-}
+
 
 #stockDropdown {
     padding: 10px;
@@ -128,8 +153,14 @@ th, td {
     width: 300px;
 }
 
+@media screen and (max-width: 1025px) and (min-width: 768px) {
+    .search-section {
+        display: flex;
+    }
+}
 
-@media (max-width: 768px) {
+
+@media screen and (max-width: 768px) {
     .search-section {
         flex-direction: column;
     }
@@ -140,5 +171,14 @@ th, td {
 
     .header_div h1 {
         font-size: 1.5rem;
+    }
+
+    .dropdown-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        font-size: 0.85rem; 
     }
 }

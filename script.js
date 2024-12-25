@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_ALPHA_VANTAGE_API_KEY';
+const apiKey = 'ODC8GAYULPDM7U63';
 const stockSearch = document.getElementById('stockSearch');
 const searchButton = document.getElementById('searchButton');
 const stockDetails = document.getElementById('stockDetails');
@@ -9,24 +9,19 @@ let stockChart;
 const stockDropdown = document.getElementById('stockDropdown');
 const loadStockButton = document.getElementById('loadStockButton');
 
-// Fetch stock data
 async function getStockData(stockSymbol) {
     const response = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=${apiKey}`);
     const data = await response.json();
     return data['Time Series (Daily)'];
 }
 
-// Fetch top 10 trending stocks
 async function getTrendingStocks() {
     const response = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${apiKey}`);
     const data = await response.json();
-    // Mocking top 10 stocks as Alpha Vantage API does not directly provide top trending stocks.
-    // Replace this part with an actual trending stocks API endpoint.
     const trendingStocks = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'FB', 'NFLX', 'NVDA', 'BABA', 'INTC'];
     return trendingStocks;
 }
 
-// Populate dropdown with trending stocks
 async function populateDropdown() {
     const trendingStocks = await getTrendingStocks();
     trendingStocks.forEach(stock => {
@@ -37,7 +32,6 @@ async function populateDropdown() {
     });
 }
 
-// Display stock details
 function displayStockDetails(stockData, symbol) {
     const latestDate = Object.keys(stockData)[0];
     const latestData = stockData[latestDate];
@@ -55,7 +49,6 @@ function displayStockDetails(stockData, symbol) {
     updateStockTable(symbol, price, change, volume);
 }
 
-// Update stock comparison table
 function updateStockTable(symbol, price, change, volume) {
     const newRow = stockTable.insertRow();
     newRow.innerHTML = `
@@ -66,7 +59,6 @@ function updateStockTable(symbol, price, change, volume) {
     `;
 }
 
-// Display stock price graph
 function displayStockGraph(stockData) {
     const labels = Object.keys(stockData).slice(0, 30).reverse();
     const data = labels.map(date => stockData[date]['4. close']);
@@ -100,7 +92,6 @@ function displayStockGraph(stockData) {
     });
 }
 
-// Handle stock search
 searchButton.addEventListener('click', async () => {
     const stockSymbol = stockSearch.value.toUpperCase();
     const stockData = await getStockData(stockSymbol);
@@ -113,7 +104,6 @@ searchButton.addEventListener('click', async () => {
     }
 });
 
-// Load stock from dropdown
 loadStockButton.addEventListener('click', async () => {
     const selectedStock = stockDropdown.value;
     const stockData = await getStockData(selectedStock);
@@ -125,5 +115,4 @@ loadStockButton.addEventListener('click', async () => {
     }
 });
 
-// Initialize dropdown with trending stocks
 populateDropdown();
